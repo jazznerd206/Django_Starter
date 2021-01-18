@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import HomePage from "./HomePage.js";
+
 
 export default class App extends Component {
     constructor(props) {
         super(props);   
     }
     render() {
-        return (<h1>React test</h1>)
+        return (
+            <div>
+                <HomePage />
+            </div>
+        )
     }
 }
 
