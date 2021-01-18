@@ -7,7 +7,44 @@ export default class CreateRoom extends Component {
     defaultVotes = 2
     constructor(props) {
         super(props);
+        this.state = {
+            guestCanPause: true,
+            votesToSkip: this.defaultVotes,
+        }
+
+        this.handleVotesChange = this.handleVotesChange.bind(this);
+        this.handGuestCanPauseChange = this.handGuestCanPauseChange.bind(this);
+        this.handleRoomButtonClick = this.handleRoomButtonClick.bind(this);
     }
+
+    handleVotesChange(e) {
+        this.setState({
+            votesToSkip: e.target.value
+        });
+    }
+
+    handGuestCanPauseChange(e) {
+        this.setState({
+            guestCanPause: e.target.value === true ? true : false
+        });
+    }
+
+    handleRoomButtonClick() {
+        const requestOptions = {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            votes_to_skip: this.state.votesToSkip,
+            guest_can_pause: this.state.guestCanPause,
+          }),
+        };
+        fetch("/api/create-room", requestOptions)
+          .then((response) => response.json())
+          .then((data) => console.log(data));
+      }
+    
+    
+
     render() {
         return (
             <Grid 
@@ -41,6 +78,7 @@ export default class CreateRoom extends Component {
                         <RadioGroup
                             row
                             defaultValue="true"
+                            onChange={this.handGuestCanPauseChange}
                             >
                                 <FormControlLabel
                                     value="true"
@@ -64,6 +102,7 @@ export default class CreateRoom extends Component {
                 >
                     <FormControl>
                         <TextField
+                            onChange={this.handleVotesChange}
                             require="true"
                             type="number"
                             defaultValue={this.defaultVotes}
@@ -89,6 +128,7 @@ export default class CreateRoom extends Component {
                     <Button 
                         color="primary"
                         variant="contained"
+                        onClick={this.handleRoomButtonClick}
                     > Create Room
                     </Button>    
                 </Grid>
