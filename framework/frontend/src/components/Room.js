@@ -21,8 +21,8 @@ export default class Room extends Component {
     this.renderSettings = this.renderSettings.bind(this);
     this.getRoomDetails = this.getRoomDetails.bind(this);
     this.authenticateSpotify = this.authenticateSpotify.bind(this);
+    this.getCurrentSong = this.getCurrentSong.bind(this);
     this.getRoomDetails();
-    this.getCurrentSong = this.getCurrentSong.bind(this)
   }
 
 
@@ -84,7 +84,6 @@ export default class Room extends Component {
       })
       .then((data) => {
         this.setState({ song: data });
-        console.log(data);
       });
     }
 
@@ -150,13 +149,12 @@ export default class Room extends Component {
       return this.renderSettings();
     }
     return (
-      <Grid container spacing={1}>
+      <Grid container spacing={1} alignItems="center">
         <Grid item xs={12} align="center">
           <Typography variant="h4" component="h4">
             Code: {this.roomCode}
           </Typography>
         </Grid>
-        {JSON.stringify(this.state.song)}
         <MusicPlayer {...this.state.song}/>
         {this.state.isHost ? this.renderSettingsButton() : null}
         <Grid item xs={12} align="center">
