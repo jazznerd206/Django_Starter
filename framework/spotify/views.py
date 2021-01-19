@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .credentials import REDIRECT_URI, CLIENT_ID, CLIENT_SECRET
 from rest_framework.views import APIView
+from requests import Request, post
 from rest_framework import status
 from rest_framework.response import Response
-from requests import Request, post
+from .util import update_or_create_user_tokens, is_spotify_authenticated, get_user_tokens
+from api.models import Room
 import os
 import dotenv
 
@@ -18,7 +20,7 @@ class AuthURL(APIView):
             'scope': scopes,
             'response_type': 'code',
             'redirect_uri': REDIRECT_URI,
-            'client_id': os.environ['CLIENT_ID']
+            'client_id': CLIENT_ID
         }).prepare().url
 
         return Response({'url': url}, status=status.HTTP_200_OK)
@@ -32,7 +34,7 @@ def spotify_callback(request, format=None):
         'code': code,
         'redirect_uri': REDIRECT_URI,
         'client_id': CLIENT_ID,
-        'client_secret': os.environ['CLIENT_ID']
+        'client_secret': CLIENT_SECRET
     }).json()
 
     access_token = response.get('access_token')
