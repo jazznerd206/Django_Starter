@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from requests import Request, post
 from rest_framework import status
 from rest_framework.response import Response
-from .util import update_or_create_user_tokens, is_spotify_authenticated, get_user_tokens
+from .util import update_or_create_user_tokens, is_spotify_authenticated, get_user_tokens, execute_spotify_api_request
 from api.models import Room
 import os
 import dotenv
@@ -57,18 +57,9 @@ class IsAuthenticated(APIView):
             self.request.session.session_key)
         return Response({'status': is_authenticated}, status=status.HTTP_200_OK)
 
-def execute_spotify_api_request(session_id, endpoint, post_=False, put_=False):
-    tokens = get_user_tokens(session_id)
-    headers = {'Content-Type': 'application/json',
-               'Authorization': "Bearer " + tokens.access_token}
-
-    if post_:
-        post(BASE_URL + endpoint, headers=headers)
-    if put_:
-        put(BASE_URL + endpoint, headers=headers)
-
-    response = get(BASE_URL + endpoint, {}, headers=headers)
-    try:
-        return response.json()
-    except:
-        return {'Error': 'Issue with request'}
+class CurrentSong(APIView):
+    def get(self, request, format=None):
+        roomCode = self.request.session.get('room-code')
+        room = Room.objects.filter(code=room_code)[0]
+        host = room.host
+        endpoint = 'player/currently-playing'
