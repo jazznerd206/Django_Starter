@@ -120,7 +120,7 @@ export default class CreateRoomPage extends Component {
       return (
         <Grid container spacing={1}>
           <Grid item xs={12} align="center">
-            {/* <Collapse
+            <Collapse
               in={this.state.errorMsg != "" || this.state.successMsg != ""}
             >
               {this.state.successMsg != "" ? (
@@ -142,7 +142,7 @@ export default class CreateRoomPage extends Component {
                   {this.state.errorMsg}
                 </Alert>
               )}
-            </Collapse> */}
+            </Collapse>
           </Grid>
           <Grid item xs={12} align="center">
             <Typography component="h4" variant="h4">
@@ -160,7 +160,7 @@ export default class CreateRoomPage extends Component {
                 onChange={this.handleGuestCanPauseChange}
               >
                 <FormControlLabel
-                  value="true"
+                  value={"true"}
                   control={<Radio color="primary" />}
                   label="Play/Pause"
                   labelPlacement="bottom"
