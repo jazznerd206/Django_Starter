@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .credentials import REDIRECT_URI, CLIENT_ID, CLIENT_SECRET
+from .credentials import REDIRECT_URI, CLIENT_SECRET, CLIENT_ID
 from rest_framework.views import APIView
 from requests import Request, post
 from rest_framework import status
@@ -9,14 +9,12 @@ from api.models import Room
 import os
 import dotenv
 
-# Create your views here.
 
 class AuthURL(APIView):
-
-    def get(self, request, fromat=None):
+    def get(self, request, fornat=None):
         scopes = 'user-read-playback-state user-modify-playback-state user-read-currently-playing'
 
-        url = Request('GET', 'https://accounts.spotify.com/authorize', params = {
+        url = Request('GET', 'https://accounts.spotify.com/authorize', params={
             'scope': scopes,
             'response_type': 'code',
             'redirect_uri': REDIRECT_URI,
@@ -24,6 +22,7 @@ class AuthURL(APIView):
         }).prepare().url
 
         return Response({'url': url}, status=status.HTTP_200_OK)
+
 
 def spotify_callback(request, format=None):
     code = request.GET.get('code')
@@ -58,6 +57,18 @@ class IsAuthenticated(APIView):
             self.request.session.session_key)
         return Response({'status': is_authenticated}, status=status.HTTP_200_OK)
 
+def execute_spotify_api_request(session_id, endpoint, post_=False, put_=False):
+    tokens = get_user_tokens(session_id)
+    headers = {'Content-Type': 'application/json',
+               'Authorization': "Bearer " + tokens.access_token}
 
+    if post_:
+        post(BASE_URL + endpoint, headers=headers)
+    if put_:
+        put(BASE_URL + endpoint, headers=headers)
 
-
+    response = get(BASE_URL + endpoint, {}, headers=headers)
+    try:
+        return response.json()
+    except:
+        return {'Error': 'Issue with request'}
