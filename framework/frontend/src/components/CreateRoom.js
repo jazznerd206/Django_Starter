@@ -65,10 +65,12 @@ export default class CreateRoomPage extends Component {
       };
       fetch("/api/update-room", requestOptions).then((response) => {
         if (response.ok) {
+            console.log('yay')
           this.setState({
             successMsg: "Room updated successfully!",
           });
         } else {
+            console.log('oops')
           this.setState({
             errorMsg: "Error updating room...",
           });
@@ -113,12 +115,12 @@ export default class CreateRoomPage extends Component {
     }
   
     render() {
-      const title = !this.props.update ? "Update Room" : "Create a Room";
+      const title = this.props.update ? "Update Room" : "Create a Room";
   
       return (
         <Grid container spacing={1}>
           <Grid item xs={12} align="center">
-            <Collapse
+            {/* <Collapse
               in={this.state.errorMsg != "" || this.state.successMsg != ""}
             >
               {this.state.successMsg != "" ? (
@@ -140,7 +142,7 @@ export default class CreateRoomPage extends Component {
                   {this.state.errorMsg}
                 </Alert>
               )}
-            </Collapse>
+            </Collapse> */}
           </Grid>
           <Grid item xs={12} align="center">
             <Typography component="h4" variant="h4">
