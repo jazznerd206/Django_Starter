@@ -14,7 +14,7 @@ export default class MusicPlayer extends Component {
   constructor(props) {
     super(props);
   }
-  
+
   pauseSong() {
     const requestOptions = {
       method: "PUT",
@@ -48,7 +48,11 @@ export default class MusicPlayer extends Component {
               {this.props.artist}
             </Typography>
             <div>
-              <IconButton>
+              <IconButton
+                onClick={() => {
+                  this.props.is_playing ? this.pauseSong() : this.playSong();
+                }}
+              >
                 {this.props.is_playing ? <PauseIcon /> : <PlayArrowIcon />}
               </IconButton>
               <IconButton>
