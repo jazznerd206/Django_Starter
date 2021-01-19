@@ -16,3 +16,17 @@ def get_user_tokens(session_id):
     else:
         return None
 
+
+
+
+def is_spotify_authenticated(session_id):
+    tokens = get_user_tokens(session_id)
+    if tokens:
+        expiry = tokens.expires_in
+        if expiry <= timezone.now():
+            refresh_spotify_token(session_id)
+
+        return True
+
+    return False
+
