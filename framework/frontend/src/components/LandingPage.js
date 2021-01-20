@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-// import { BrowserRouter as Router, Switch, Route, Link, Redirect, } from "react-router-dom";
-// import JoinRoom from "./JoinRoom.js";
-// import CreateRoom from "./CreateRoom.js";
-// import Room from "./Room.js";
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Switch, Route, Link, Redirect, } from "react-router-dom";
+import { Button, ButtonGroup } from "@material-ui/core";
+import JoinRoom from "./JoinRoom.js";
+import CreateRoom from "./CreateRoom.js";
+import Room from "./Room.js";
 
 function LandingPage() {
 
@@ -25,20 +26,46 @@ function LandingPage() {
 
     const renderPage = () => {
         return (
-            <div className="center landingPage">
-                <h1>Welcome</h1>
+            <div className="select-box">
+                <h1>Be in the room.</h1>
+                <div className="button"> 
+                    <a href="/join">Join a Room</a>
+                </div>
+                <div className="button">
+                    <a href="/create">Start a Room</a>
+                </div>
             </div>
         )
     }
 
 
     return (
-        <div className="center landingPage">
-            <div className="">
-                <h1>Welcome</h1>
-            </div>
-            {renderPage}    
+    <Router>
+        <div className="container">
+        <Switch>
+          <Route
+            exact
+            path="/"
+            // component={renderPage}
+            render={() => {
+                return roomCode ? (
+                <Redirect to={`/room/${roomCode}`} />
+                ) : (
+                renderPage()
+                );
+            }}
+            />
+          <Route path="/join" component={JoinRoom} />
+          <Route path="/create" component={CreateRoom} />
+          <Route
+            path="/room/:roomCode"
+            render={(props) => {
+              return <Room {...props} leaveRoomCallback={clearRoomCode} />;
+            }}
+          />
+        </Switch>
         </div>
+      </Router>
     )
 }
 
