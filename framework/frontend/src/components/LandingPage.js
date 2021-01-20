@@ -43,12 +43,12 @@ function LandingPage() {
         return (
             <div>
                 <div className="select-box">
-                    <h1>Be where the tunes are</h1>
+                    <h1>Be the party</h1>
                     <div className="button"> 
-                        <a href="/join">Join a Room</a>
+                        <a href="/join">Join a Party</a>
                     </div>
                     <div className="button">
-                        <a href="/newRoom">Start a Room</a>
+                        <a href="/newRoom">Start a Party</a>
                     </div>
                 </div>
                 <RoomsView rooms={rooms}/>

@@ -7,7 +7,7 @@ function RoomsView(props) {
     return (
         <div className="view-container">
             <div className="view-title">
-                <h3>Open Rooms</h3>
+                <h3>Available Parties</h3>
             </div>
             <div className="view-grid">
                 {props.rooms.map(room => (
