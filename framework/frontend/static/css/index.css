@@ -114,6 +114,14 @@ html, body {
 }
 
 
+/* JOIN ROOM VIEW */
+/* input is from materialize ui */
+/* buttons have yet to be customized */
+#text-field {
+    color: whitesmoke;
+}
+
+
 /* .center {
     position: relative;
     top: 50%;
