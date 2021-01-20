@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import HomePage from "./HomePage.js";
+import LandingPage from "./LandingPage.js";
 
 
 export default class App extends Component {
@@ -9,7 +10,8 @@ export default class App extends Component {
     }
     render() {
         return (
-            <div className="center">
+            <div className="center App">
+                <LandingPage />
                 <HomePage />
             </div>
         )
