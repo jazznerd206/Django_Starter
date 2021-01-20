@@ -38,53 +38,51 @@ export default class HomePage extends Component {
 
   renderHomePage() {
     return (
-      <div className="grid-box">
-          <Grid  
-            spacing={6}
-            classes={{ label: 'MuiGrid-container' }}
-          >
-            <Grid 
-                item 
-                xs={12} 
-                align="center"
+      <Grid 
+        container 
+        spacing={3}
+        classes={{ label: 'MuiGrid-container' }}
+      >
+        <Grid 
+            item 
+            xs={12} 
+            align="center"
+        >asdfadsfasdfasdf
+          <Typography 
+            variant="h3" 
+            compact="h3"
+            color="red"
+        >
+            House Party
+          </Typography>
+        </Grid>
+        <Grid 
+            item xs={12} 
+            align="center"
+        >
+          <ButtonGroup 
+            disableElevation 
+            variant="contained" 
+            color="primary"
+        >
+            <Button 
+                color="primary" 
+                to="/join" 
+                component={Link}
+            > 
+              Join a Room
+            </Button>
+            <Button 
+                color="secondary" 
+                to="/create" 
+                component={Link}
             >
-              <Typography 
-                variant="h3" 
-                compact="h3"
-                color="red"
-            >
-                House Party
-              </Typography>
-            </Grid>
-            <Grid 
-                item xs={12} 
-                align="center"
-            >
-              <ButtonGroup 
-                disableElevation 
-                variant="contained" 
-                color="primary"
-            >
-                <Button 
-                    color="primary" 
-                    to="/join" 
-                    component={Link}
-                >
-                  Join a Room
-                </Button>
-                <Button 
-                    color="secondary" 
-                    to="/create" 
-                    component={Link}
-                >
-                  Create a Room
-                </Button>
-              </ButtonGroup>
-            </Grid>
-          </Grid>
-        );
-      </div>
-    )
+              Create a Room
+            </Button>
+          </ButtonGroup>
+        </Grid>
+      </Grid>
+    );
   }
 
   render() {

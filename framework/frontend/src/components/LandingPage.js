@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link, Redirect, } from "react-router-dom";
-import JoinRoom from "./JoinRoom.js";
-import CreateRoom from "./CreateRoom.js";
-import Room from "./Room.js";
+// import { BrowserRouter as Router, Switch, Route, Link, Redirect, } from "react-router-dom";
+// import JoinRoom from "./JoinRoom.js";
+// import CreateRoom from "./CreateRoom.js";
+// import Room from "./Room.js";
 
 function LandingPage() {
 
@@ -33,41 +33,11 @@ function LandingPage() {
 
 
     return (
-        <div className="center">
-            <div className="landingPage">
+        <div className="center landingPage">
+            <div className="">
                 <h1>Welcome</h1>
             </div>
-        {renderPage}
-        <Router>    
-            <Switch>
-                {/* <Route
-                    exact
-                    path="/"
-                    render={() => {
-                    return this.state.roomCode ? (
-                        <Redirect to={`/room/${}`} />
-                    ) : (
-                        this.renderHomePage()
-                    );
-                }}
-                /> */}
-                <Route 
-                    path="/join" 
-                    component={JoinRoom} 
-                />
-                <Route 
-                    path="/create" 
-                    component={CreateRoom} 
-                />
-                <Route
-                    path="/room/:roomCode"
-                    render={(props) => {
-                    return <Room {...props} leaveRoomCallback={} />;
-                }}
-                />
-            </Switch>
-        </Router>
-            
+            {renderPage}    
         </div>
     )
 }

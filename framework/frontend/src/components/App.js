@@ -11,12 +11,12 @@ export default class App extends Component {
     render() {
         return (
             <div className="center App">
-                <LandingPage />
                 <HomePage />
+                <LandingPage />
             </div>
         )
     }
 }
 
-const appDiv = document.getElementById('app');
-render(<App />, appDiv);
+// const appDiv = document.getElementById('app');
+// render(<App />, appDiv);
