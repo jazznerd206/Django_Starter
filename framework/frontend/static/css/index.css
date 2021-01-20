@@ -33,10 +33,6 @@ html, body {
     justify-content: flex-end;
 }
 
-.container {
-    transform: translate( -25%, 0);
-}
-
 .select-box {
     text-align: center;
     justify-content: flex-end;
@@ -74,7 +70,7 @@ html, body {
     color: black;
 }
 
-/* ROOM VIEW  */
+/* ROOMS AVAILABLE TO JOIN  */
 /* bottom of landing page */
 /* displays the code and status of current rooms */
 .view-container {
@@ -103,6 +99,18 @@ html, body {
 .active-room {
     /* width: auto; */
     border: 1px solid goldenrod;
+}
+
+
+/* INSIDE THE ROOM VIEW */
+.room-container {
+    height: 100%;
+    width: 100%;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-content: center; */
 }
 
 

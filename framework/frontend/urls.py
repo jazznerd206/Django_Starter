@@ -8,4 +8,5 @@ urlpatterns = [
     path('join', index),
     path('newRoom', index),
     path('room/<str:roomCode>', index),
+    path('room', index)
 ]

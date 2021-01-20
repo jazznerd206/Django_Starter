@@ -4,11 +4,6 @@ import LandingPage from "./LandingPage.js";
 
 export default function App() {
 
-    const renderPage = () => {
-        return(
-            <h1>Lander Lander</h1>
-        )
-    }
     return (
         <div className="landingPage">
             <LandingPage />

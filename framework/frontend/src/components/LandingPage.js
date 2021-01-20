@@ -4,6 +4,7 @@ import { Button, ButtonGroup } from "@material-ui/core";
 import RoomsView from './RoomsView.js'
 import JoinRoom from "./JoinRoom.js";
 import CreateRoom from "./CreateRoom.js";
+import Room2 from "./Room2.js";
 import Room from "./Room.js";
 
 function LandingPage() {
@@ -58,31 +59,29 @@ function LandingPage() {
 
 
     return (
-    <Router>
-        <div className="container">
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => {
-                return roomCode ? (
-                <Redirect to={`/room/${roomCode}`} />
-                ) : (
-                renderPage()
-                );
-            }}
+        <Router>
+            <Switch>
+            <Route
+                exact
+                path="/"
+                render={() => {
+                    return roomCode ? (
+                    <Redirect to={`/room/${roomCode}`} />
+                    ) : (
+                    renderPage()
+                    );
+                }}
+                />
+            <Route path="/join" component={JoinRoom} />
+            <Route path="/newRoom" component={CreateRoom} />
+            <Route
+                path="/room/:roomCode"
+                render={(props) => {
+                return <Room2 {...props} leaveRoomCallback={clearRoomCode} />;
+                }}
             />
-          <Route path="/join" component={JoinRoom} />
-          <Route path="/create" component={CreateRoom} />
-          <Route
-            path="/room/:roomCode"
-            render={(props) => {
-              return <Room {...props} leaveRoomCallback={clearRoomCode} />;
-            }}
-          />
-        </Switch>
-        </div>
-      </Router>
+            </Switch>
+        </Router>
     )
 }
 
