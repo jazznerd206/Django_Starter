@@ -123,9 +123,9 @@ class PlaySong(APIView):
 class SkipSong(APIView):
     def post(self, request, format=None):
         room_code = self.request.session.get('room_code')
-        room = Room.objects.filter(code=code)[0]
+        room = Room.objects.filter(code=room_code)[0]
 
-        if self.request.session.session_key == roomhost:
+        if self.request.session.session_key == room.host:
             skip_song(room.host)
         else:
             pass
