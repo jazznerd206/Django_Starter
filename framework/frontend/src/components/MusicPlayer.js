@@ -31,6 +31,16 @@ export default class MusicPlayer extends Component {
     fetch("/spotify/play", requestOptions);
   }
 
+  skipSong() {
+      const requestOptions = {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      };
+      fetch('spotify/skip', requestOptions)
+  }
+
   render() {
     const songProgress = (this.props.time / this.props.duration) * 100;
 
