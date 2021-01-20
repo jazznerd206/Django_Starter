@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect, } from "react-router-dom";
 import { Button, ButtonGroup } from "@material-ui/core";
+import RoomsView from './RoomsView.js'
 import JoinRoom from "./JoinRoom.js";
 import CreateRoom from "./CreateRoom.js";
 import Room from "./Room.js";
@@ -8,12 +9,25 @@ import Room from "./Room.js";
 function LandingPage() {
 
     const [ roomCode, setRoomCode ] = useState(null);
+    const [ rooms, setRooms ] = useState([]);
 
     const clearRoomCode = () => {
         setRoomCode(null);
     }
 
+    const fetchRooms = () => {
+        fetch('/api/room')
+            .then(response => response.json())
+            .then(data => {
+                if (!data) {
+                    console.log('no data')
+                }
+                setRooms(data)
+        })
+    }
+
     useEffect(() => {
+        fetchRooms();
         fetch("/api/user-in-room")
             .then((response) => response.json())
             .then((data) => {
@@ -24,16 +38,20 @@ function LandingPage() {
         });
     }, [])
 
+
     const renderPage = () => {
         return (
-            <div className="select-box">
-                <h1>Be in the room.</h1>
-                <div className="button"> 
-                    <a href="/join">Join a Room</a>
+            <div>
+                <div className="select-box">
+                    <h1>Be where the tunes are</h1>
+                    <div className="button"> 
+                        <a href="/join">Join a Room</a>
+                    </div>
+                    <div className="button">
+                        <a href="/newRoom">Start a Room</a>
+                    </div>
                 </div>
-                <div className="button">
-                    <a href="/create">Start a Room</a>
-                </div>
+                <RoomsView rooms={rooms}/>
             </div>
         )
     }
@@ -46,7 +64,6 @@ function LandingPage() {
           <Route
             exact
             path="/"
-            // component={renderPage}
             render={() => {
                 return roomCode ? (
                 <Redirect to={`/room/${roomCode}`} />

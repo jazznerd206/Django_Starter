@@ -74,6 +74,38 @@ html, body {
     color: black;
 }
 
+/* ROOM VIEW  */
+/* bottom of landing page */
+/* displays the code and status of current rooms */
+.view-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: auto;
+    width: 400px;
+}
+
+.view-title {
+    font-variant: small-caps;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.view-grid {
+    width: 100%;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+}
+
+.active-room {
+    /* width: auto; */
+    border: 1px solid goldenrod;
+}
+
+
 /* .center {
     position: relative;
     top: 50%;
