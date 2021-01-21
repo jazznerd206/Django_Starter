@@ -6,6 +6,7 @@ import JoinRoom from "./JoinRoom.js";
 import Join from "./Join.js";
 import CreateRoom from "./CreateRoom.js";
 import Room2 from "./Room2.js";
+import CreateRoom2 from "./CreateRoom2.js";
 import Room from "./Room.js";
 
 function LandingPage() {
@@ -74,7 +75,7 @@ function LandingPage() {
                 }}
                 />
             <Route path="/join" component={Join} />
-            <Route path="/newRoom" component={CreateRoom} />
+            <Route path="/newRoom" component={CreateRoom2} />
             <Route
                 path="/room/:roomCode"
                 render={(props) => {

@@ -1,4 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { Button, Grid, Typography, TextField, Collapse, FormHelperText, FormControl, Radio, RadioGroup, FormControlLabel } from '@material-ui/core';
+import Alert from "@material-ui/lab/Alert";
+import { Link } from 'react-router-dom';
 
 function CreateRoom2() {
 
@@ -12,11 +15,10 @@ function CreateRoom2() {
     const title = update ? "Update Room" : "Create a Room";
     const updateCallback = () => {};
 
-
     // IDEALLY EACH OF THE FOLLOWING SECTIONS WILL BE BROKEN OUT 
     // INTO ITS OWN COMPONENT TO INCREASE REUSABILITY AND TESTABILITY
     // =============================================================
-    // ========= RENDER CREATE/UPDATTE BUTTONS =====================
+    // ============== RENDER CREATE/UPDATTE BUTTONS ================
     // =============================================================
     const renderCreateButtons = () => {
         return (
@@ -51,7 +53,6 @@ function CreateRoom2() {
           </Grid>
         );
     }
-
     // =============================================================
     // ================ ON CLICK FUNCTIONS =========================
     // =============================================================
@@ -89,11 +90,6 @@ function CreateRoom2() {
             updateCallback();
         });
       }
-
-
-
-
-
     // =============================================================
     // ================ STATE MANAGEMENT ===========================
     // =============================================================
@@ -106,8 +102,84 @@ function CreateRoom2() {
 
 
     return (
-        <div>
-            
+        <div className="new-container">
+            <Grid container spacing={1}>
+            <Grid item xs={12} align="center">
+                <Collapse
+                in={errorMsg != "" || successMsg != ""}
+                >
+                {successMsg != "" ? (
+                    <Alert
+                    severity="success"
+                    onClose={() => {
+                        setSuccessMessage('');
+                    }}
+                    >
+                    {successMsg}
+                    </Alert>
+                ) : (
+                    <Alert
+                    severity="error"
+                    onClose={() => {
+                        setErrorMsg('');
+                    }}
+                    >
+                    {errorMsg}
+                    </Alert>
+                )}
+                </Collapse>
+            </Grid>
+            <Grid item xs={12} align="center">
+                <Typography component="h4" variant="h4">
+                {title}
+                </Typography>
+            </Grid>
+            <Grid item xs={12} align="center">
+                <FormControl component="fieldset">
+                <FormHelperText>
+                    <div align="center">Guest Control of Playback State</div>
+                </FormHelperText>
+                <RadioGroup
+                    row
+                    defaultValue={guestCanPause.toString()}
+                    onChange={handleGuestCanPauseChange}
+                >
+                    <FormControlLabel
+                    value={"true"}
+                    control={<Radio color="primary" />}
+                    label="Play/Pause"
+                    labelPlacement="bottom"
+                    />
+                    <FormControlLabel
+                    value="false"
+                    control={<Radio color="secondary" />}
+                    label="No Control"
+                    labelPlacement="bottom"
+                    />
+                </RadioGroup>
+                </FormControl>
+            </Grid>
+            <Grid item xs={12} align="center">
+                <FormControl>
+                <TextField
+                    required={true}
+                    type="number"
+                    onChange={handleVotesChange}
+                    defaultValue={votesToSkip}
+                    inputProps={{
+                    min: 1,
+                    style: { textAlign: "center" },
+                    }}
+                />
+                <FormHelperText>
+                    <div align="center">Votes Required To Skip Song</div>
+                </FormHelperText>
+                </FormControl>
+            </Grid>
+            {update
+                ? renderUpdateButtons()
+                : renderCreateButtons()}
+            </Grid>
         </div>
     )
 }
