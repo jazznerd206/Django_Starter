@@ -36,7 +36,7 @@ function Join(props) {
 
     
     return (
-        <div className="join-code">
+        <div className="page-container">
             <div className="input">
                 <Grid 
                     item 

@@ -2,6 +2,7 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    background: black;
     color: white;
 }
 
@@ -121,7 +122,8 @@ html, body {
     color: whitesmoke;
 }
 
-.join-code {
+.page-container {
+    background: rgb(255,255,255,.5); 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -139,6 +141,7 @@ html, body {
 /* radio buttons to switch between control/no control */
 /* input field for votes to skip */
 .new-container {
+    background: rgb(255,255,255,.5); 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -146,6 +149,24 @@ html, body {
     height: auto;
     width: 400px;
 }
+
+
+@media screen and (max-width: 768px) {
+    .landingPage {
+        width: 100%;
+        background-image: url('../images/MilesClub.jpg');
+        background-position: left;
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+    .select-box {
+        margin-top: 40vh;
+        padding: 0;
+    }
+  }
 
 /* .center {
     position: relative;

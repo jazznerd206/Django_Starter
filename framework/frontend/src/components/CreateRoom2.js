@@ -3,7 +3,7 @@ import { Button, Grid, Typography, TextField, Collapse, FormHelperText, FormCont
 import Alert from "@material-ui/lab/Alert";
 import { Link } from 'react-router-dom';
 
-function CreateRoom2() {
+function CreateRoom2(props) {
 
     const [ guestCanPause, setGuestCanPause ] = useState(false);
     const [ votesToSkip, setVotesToSkip ] = useState(2);
@@ -24,18 +24,19 @@ function CreateRoom2() {
         return (
           <Grid container spacing={1}>
             <Grid item xs={12} align="center">
-              <Button
-                color="primary"
-                variant="contained"
+              <div
+                className="button"
                 onClick={handleRoomButtonPressed}
               >
-                Create A Room
-              </Button>
+                <a>Create A Room</a>
+              </div>
             </Grid>
             <Grid item xs={12} align="center">
-              <Button color="secondary" variant="contained" to="/" component={Link}>
-                Back
-              </Button>
+                <div className="button">
+                    <a href="/">
+                        Back
+                    </a>
+                </div>
             </Grid>
           </Grid>
         );
@@ -43,13 +44,11 @@ function CreateRoom2() {
     const renderUpdateButtons = () => {
         return (
           <Grid item xs={12} align="center">
-            <Button
-              color="primary"
-              variant="contained"
-              onClick={this.handleUpdateButtonPressed}
+            <div
+              onClick={handleUpdateButtonPressed}
             >
               Update Room
-            </Button>
+            </div>
           </Grid>
         );
     }

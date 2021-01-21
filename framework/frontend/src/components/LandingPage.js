@@ -46,7 +46,7 @@ function LandingPage() {
         return (
             <div>
                 <div className="select-box">
-                    <h1>Be the party</h1>
+                    <h1>Be at the party</h1>
                     <div className="button"> 
                         <a href="/join">Join a Party</a>
                     </div>
