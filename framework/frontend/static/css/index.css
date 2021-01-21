@@ -121,6 +121,19 @@ html, body {
     color: whitesmoke;
 }
 
+.join-code {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: auto;
+    width: 400px;
+}
+
+.input {
+    margin: 25px 0;
+}
+
 
 /* .center {
     position: relative;

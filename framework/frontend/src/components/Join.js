@@ -37,49 +37,44 @@ function Join(props) {
     
     return (
         <div className="join-code">
-            <Grid 
-                item 
-                xs={12} 
-                align="center">
-              <TextField
-                autoFocus
-                color="secondary"
-                error={error}
-                label="Code"
-                placeholder="Enter a Room Code"
-                value={roomCode}
-                id="text-field"
-                helperText={error}
-                variant="outlined"
-                onChange={e => handleTextFieldChange(e)}
-              />
-            </Grid>
-            <Grid 
-                item 
-                xs={12} 
-                align="center">
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={roomButtonPressed}
-              >
-                Enter Room
-              </Button>
-            </Grid>
-            <Grid 
-                item 
-                xs={12} 
-                align="center"
-            >
-              <Button 
-                variant="contained" 
-                color="secondary" 
-                to="/" 
-                component={Link}
-            >
-                Back
-              </Button>
-            </Grid>
+            <div className="input">
+                <Grid 
+                    item 
+                    xs={12} 
+                    align="center">
+                <TextField
+                    autoFocus
+                    color="secondary"
+                    error={error}
+                    label="Code"
+                    placeholder="Enter a Room Code"
+                    value={roomCode}
+                    id="text-field"
+                    helperText={error}
+                    variant="outlined"
+                    onChange={e => handleTextFieldChange(e)}
+                />
+                </Grid>
+            </div>
+            <div>
+                <Grid 
+                    item 
+                    xs={12} 
+                    align="center">
+                    <div
+                        className="button"
+                        onClick={roomButtonPressed}
+                    >
+                        Enter Room
+                    </div>
+
+                    <div 
+                        className="button"
+                    >
+                        <a href="/">Back</a>
+                    </div>
+                </Grid>
+            </div>
         </div>
     )
 }
