@@ -10,12 +10,16 @@ function RoomsView(props) {
                 <h3>Available Parties</h3>
             </div>
             <div className="view-grid">
-                {props.rooms.map(room => (
+                {props.rooms ? (props.rooms.map(room => (
                     <ActiveRoom 
                         key={room.id}
                         code={room.code}
                     ></ActiveRoom>
-                ))}
+                )))
+                :
+                (
+                    null
+                )}
             </div>
         </div>
     )

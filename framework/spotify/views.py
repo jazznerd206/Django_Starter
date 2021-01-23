@@ -17,7 +17,7 @@ class AuthURL(APIView):
         url = Request('GET', 'https://accounts.spotify.com/authorize', params={
             'scope': scopes,
             'response_type': 'code',
-            'redirect_uri': os.environ['REDIRECT_URI'],
+            'redirect_uri': 'http://127.0.0.1:8000/spotify/redirect',
             'client_id': os.environ['CLIENT_ID']
         }).prepare().url
 
@@ -31,9 +31,9 @@ def spotify_callback(request, format=None):
     response = post('https://accounts.spotify.com/api/token', data={
         'grant_type': 'authorization_code',
         'code': code,
-        'redirect_uri': os.environ['REDIRECT_URI'],
+        'redirect_uri': 'http://127.0.0.1:8000/spotify/redirect',
         'client_id': os.environ['CLIENT_ID'],
-        'client_secret': ['CLIENT_SECRET']
+        'client_secret': os.environ['CLIENT_SECRET']
     }).json()
 
     access_token = response.get('access_token')
