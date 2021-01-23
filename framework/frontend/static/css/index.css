@@ -166,40 +166,4 @@ html, body {
         margin-top: 40vh;
         padding: 0;
     }
-  }
-
-/* .center {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%)
-} */
-
-/* .App {
-    margin: 25px auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    height: auto;
-    background-color: aquamarine;
 }
-
-.App .MuiGrid-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: blanchedalmond;
-    box-shadow: 0 0 10px rgb(0,0,0,.25);
-    height: auto;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 50px;
-}
-
-.App .MuiGrid-container .landingPage {
-    min-height: 500px;
-    width: 100%;
-    background: teal;
-    z-index: 999;
-} */
