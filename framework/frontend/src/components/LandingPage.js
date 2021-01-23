@@ -2,12 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect, } from "react-router-dom";
 import { Button, ButtonGroup } from "@material-ui/core";
 import RoomsView from './RoomsView.js'
-import JoinRoom from "./JoinRoom.js";
 import Join from "./Join.js";
-import CreateRoom from "./CreateRoom.js";
 import Room2 from "./Room2.js";
 import CreateRoom2 from "./CreateRoom2.js";
-import Room from "./Room.js";
 
 function LandingPage() {
 
