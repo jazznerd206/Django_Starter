@@ -95,9 +95,11 @@ function Room2(props) {
     
     return (
       <div className="room-container">
-          <MusicPlayer {...song}/>
           <Grid item xs={12} align="center">
-            <img src={song.image_url} height="100%" width="100%"></img>
+            <MusicPlayer {...song}/>
+          </Grid>
+          <Grid item xs={12} align="center">
+            <img src={song.image_url}></img>
           </Grid>
           <Grid item xs={12} align="center">
               <Button

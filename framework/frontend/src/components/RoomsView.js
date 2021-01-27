@@ -3,7 +3,7 @@ import ActiveRoom from './ActiveRoom.js';
 
 function RoomsView(props) {
 
-    console.log(props.rooms)
+    // console.log(props.rooms)
     return (
         <div className="view-container">
             <div className="view-title">
